@@ -9,6 +9,16 @@ public class RectTriangle extends Shape {
 		this.height = height;
 	}
 	
+	@Override
+	public double getArea() {
+		return width * height / 2.0;
+	}
+
+	@Override
+	public double getPerimeter() {
+		return width + height + Math.sqrt( width*width + height * height );
+	}
+	
 	public double getWidth() {
 		return width;
 	}
@@ -25,14 +35,6 @@ public class RectTriangle extends Shape {
 		this.height = height;
 	}
 
-	@Override
-	public double getArea() {
-		return width * height / 2;
-	}
 
-	@Override
-	public double getPerimeter() {
-		return width + height + Math.sqrt( width*width + height * height );
-	}
 
 }

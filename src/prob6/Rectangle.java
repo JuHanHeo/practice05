@@ -9,6 +9,19 @@ public class Rectangle extends Shape implements Resizable {
 		this.height = height;
 	}
 	
+	public void resize(double s) {
+		width = width * s;
+		height= height * s;
+	}
+
+	public double getArea() {
+		return width * height;
+	}
+
+	public double getPerimeter() {
+		return (width + height) * 2;
+	}
+	
 	public double getWidth() {
 		return width;
 	}
@@ -25,19 +38,5 @@ public class Rectangle extends Shape implements Resizable {
 		this.height = height;
 	}
 	
-	@Override
-	public void resize(double s) {
-		width *= s;
-		height *= s;
-	}
 
-	@Override
-	public double getArea() {
-		return width*height;
-	}
-
-	@Override
-	public double getPerimeter() {
-		return 2*(width + height);
-	}
 }

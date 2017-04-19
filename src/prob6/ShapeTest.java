@@ -1,26 +1,24 @@
 package prob6;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ShapeTest {
 
 	public static void main(String[] args) {
-		List<Shape> list = new ArrayList<Shape>();
+		ArrayList<Shape> shape = new ArrayList<Shape>();
 		
-		list.add( new Rectangle( 5, 6 ) );
-		list.add( new RectTriangle( 6, 2 ) );
+		shape.add(new Rectangle(5, 6));
+		shape.add(new RectTriangle(6, 2));
 		
-		for( Shape s : list ) {
-			System.out.println( "area: " + s.getArea() );
-			System.out.println( "perimeter: " + s.getPerimeter() );
+		for(int i=0;i<shape.size();i++){
+			System.out.println("area: " + shape.get(i).getArea());
+			System.out.println("perimeter: " + shape.get(i).getPerimeter());
 			
-			if( s instanceof Resizable ) {
-				Resizable resizable = ( Resizable ) s;
-				resizable.resize( 0.5 );
-				
-				System.out.println( "new area: " + s.getArea() );
-				System.out.println( "new perimeter: " + s.getPerimeter() );
+			if(shape.get(i) instanceof Resizable){
+				Resizable re = (Resizable)shape.get(i);
+				re.resize(0.5);
+				System.out.println("new area: " + shape.get(i).getArea());
+				System.out.println("new perimeter: " + shape.get(i).getPerimeter());
 			}
 		}
 	}

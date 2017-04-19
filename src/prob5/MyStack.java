@@ -3,43 +3,45 @@ package prob5;
 public class MyStack {
 	private int top;
 	private String[] buffer;
-	
-	public MyStack( int capacity ) {
+
+	public MyStack( int size ) {
+		buffer = new String[size];
 		top = -1;
-		resize( capacity );
 	}
 
 	public void push( String s ) {
-		if( top == buffer.length - 1 ) {  // stack is full
-			resize( buffer.length*2 );
+		if(top==buffer.length-1){
+			buffer = resize();
 		}
-		buffer[ ++top ] = s;
+		buffer[top+1] = s;
+		top++;
+
 	}
 
 	public String pop() throws MyStackException {
-		if( isEmpty() ) { 
-			throw new MyStackException( "stack is empty" );
+		if(isEmpty()) { 
+			throw new MyStackException("stack is empty");
+		}else{
+			String s = buffer[top];
+			top--;
+			return s;
 		}
-		
-		return buffer[ top-- ];
+
 	}
-	
+
 	public boolean isEmpty() {
-		return top == -1;
+		return top==-1;
 	}
-	
-	private void resize( int capacity ) {
-		if( capacity - 1 < top ) { // 현재 크기 보다 작게 리사이징 할 경우
-			top = capacity - 1;
-			return;
-		}
 
-		String[] temp = new String[ capacity ];
+	private String[] resize() {
+		String[] myStack = new String[buffer.length+1];
 
-		for( int i = 0; i <= top; i++ ) {
-			temp[ i ] = buffer[ i ];
+		for(int i=0;i<buffer.length;i++){
+			myStack[i] = buffer[i];
 		}
-		
-		buffer= temp;
+		buffer = null;
+
+		return myStack;
+
 	}
 }
